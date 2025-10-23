@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NovaTech X1 - Smart Gadget</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background: #f7f9fc;
+      color: #222;
+      overflow-x: hidden;
+    }
+
+    /* NAVBAR */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: linear-gradient(90deg, #0078ff, #00c6ff);
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
+      z-index: 10;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    nav .logo {
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    nav .links {
+      display: flex;
+      align-items: center;
+    }
+
+    nav .links a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    nav .links a:hover {
+      text-decoration: underline;
+    }
+
+    nav .btn-login {
+      background: white;
+      color: #0078ff;
+      padding: 8px 18px;
+      border-radius: 25px;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    nav .btn-login:hover {
+      background: #005ecc;
+      color: white;
+    }
+
+    /* HERO SECTION */
+    header {
+      height: 90vh;
+      background: url('https://images.unsplash.com/photo-1593642634443-44adaa06623a?auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+      position: relative;
+    }
+
+    header::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 600px;
+      padding: 20px;
+    }
+
+    .hero-content h1 {
+      font-size: 3rem;
+      margin-bottom: 15px;
+    }
+
+    .hero-content p {
+      font-size: 1.2rem;
+      margin-bottom: 25px;
+    }
+
+    .btn-primary {
+      background: #00c6ff;
+      color: white;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 30px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn-primary:hover {
+      background: white;
+      color: #0078ff;
+    }
+
+    /* FEATURES */
+    .features {
+      text-align: center;
+      padding: 100px 40px;
+      background: white;
+    }
+
+    .features h2 {
+      color: #0078ff;
+      font-size: 2rem;
+      margin-bottom: 50px;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .feature {
+      background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+      border-radius: 15px;
+      padding: 30px;
+      transition: 0.3s;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .feature:hover {
+      transform: translateY(-8px);
+    }
+
+    .feature img {
+      width: 80px;
+      height: 80px;
+      margin-bottom: 15px;
+    }
+
+    /* SUBSCRIBE */
+    .subscribe {
+      text-align: center;
+      padding: 80px 20px;
+      background: linear-gradient(135deg, #0078ff, #00c6ff);
+      color: white;
+    }
+
+    .subscribe h2 {
+      margin-bottom: 10px;
+    }
+
+    .subscribe p {
+      margin-bottom: 25px;
+    }
+
+    .subscribe form {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .subscribe input {
+      padding: 12px 20px;
+      border: none;
+      border-radius: 25px;
+      outline: none;
+      width: 250px;
+    }
+
+    .subscribe button {
+      background: white;
+      color: #0078ff;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 25px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .subscribe button:hover {
+      background: #005ecc;
+      color: white;
+    }
+
+    .message {
+      margin-top: 10px;
+      font-weight: 500;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 25px;
+      background: #111;
+      color: #ccc;
+    }
+
+    /* MODAL */
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.7);
+      align-items: center;
+      justify-content: center;
+      z-index: 20;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      width: 320px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      position: relative;
+    }
+
+    .modal-content h2 {
+      margin-bottom: 15px;
+      color: #0078ff;
+    }
+
+    .modal-content input {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    .close {
+      position: absolute;
+      right: 15px;
+      top: 10px;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 600px) {
+      nav {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .hero-content h1 {
+        font-size: 2.2rem;
+      }
+
+      .subscribe form {
+        flex-direction: column;
+      }
+
+      .subscribe input {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- NAVBAR -->
+  <nav>
+    <div class="logo">NovaTech X1</div>
+    <div class="links">
+      <a href="#features">Features</a>
+      <a href="#subscribe">Subscribe</a>
+      <button class="btn-login" id="openLogin">Login</button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header>
+    <div class="hero-content">
+      <h1>The Future of Smart Gadgets</h1>
+      <p>Experience performance, power, and innovation with NovaTech X1.</p>
+      <button class="btn-primary">Pre-Order Now</button>
+    </div>
+  </header>
+
+  <!-- FEATURES -->
+  <section id="features" class="features">
+    <h2>Why Choose NovaTech X1?</h2>
+    <div class="feature-grid">
+      <div class="feature">
+        <img src="https://cdn-icons-png.flaticon.com/512/4712/4712043.png" alt="Performance">
+        <h3>⚡ Blazing Performance</h3>
+        <p>AI-powered processors that redefine speed and efficiency.</p>
+      </div>
+      <div class="feature">
+        <img src="https://cdn-icons-png.flaticon.com/512/3106/3106807.png" alt="Battery">
+        <h3>🔋 Endless Power</h3>
+        <p>Up to 48 hours of battery life for non-stop productivity.</p>
+      </div>
+      <div class="feature">
+        <img src="https://cdn-icons-png.flaticon.com/512/1041/1041916.png" alt="Connectivity">
+        <h3>🌐 Seamless Connectivity</h3>
+        <p>Connect instantly with next-gen wireless technology.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUBSCRIBE -->
+  <section id="subscribe" class="subscribe">
+    <h2>Stay Updated!</h2>
+    <p>Subscribe for early access, offers, and the latest news.</p>
+    <form id="subscriptionForm">
+      <input type="email" placeholder="Enter your email" required />
+      <button type="submit">Subscribe</button>
+    </form>
+    <p class="message" id="subMessage"></p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 NovaTech Inc. All rights reserved.</p>
+  </footer>
+
+  <!-- LOGIN MODAL -->
+  <div class="modal" id="loginModal">
+    <div class="modal-content">
+      <span class="close" id="closeLogin">&times;</span>
+      <h2>Login</h2>
+      <form id="loginForm">
+        <input type="text" placeholder="Username" required />
+        <input type="password" placeholder="Password" required />
+        <button type="submit" class="btn-primary">Login</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- JS -->
+  <script>
+    // Login modal
+    const openLogin = document.getElementById("openLogin");
+    const closeLogin = document.getElementById("closeLogin");
+    const modal = document.getElementById("loginModal");
+
+    openLogin.onclick = () => modal.style.display = "flex";
+    closeLogin.onclick = () => modal.style.display = "none";
+    window.onclick = (e) => { if (e.target === modal) modal.style.display = "none"; };
+
+    // Subscription form
+    const form = document.getElementById("subscriptionForm");
+    const message = document.getElementById("subMessage");
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      message.textContent = "✅ Thanks for subscribing!";
+      form.reset();
+    });
+  </script>
+</body>
+</html>
